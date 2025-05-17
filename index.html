@@ -1,41 +1,356 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<title>あなたのＨＰタイトル</title>
-<meta name="keywords" content="ページのキーワードA,B,C">
-<meta name="description" content="ページの説明">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="index.css">
+  <meta charset="UTF-8">
+  <title>SaveCalories - あなたのダイエットをサポートするアプリ</title>
+  <meta name="keywords" content="ダイエット,カロリー計算,体重管理,健康管理,ダイエットアプリ">
+  <meta name="description" content="SaveCaloriesは、あなたの目標達成をサポートする最新のダイエットアプリです。カロリー計算、体重管理、パーソナライズされたサポートで理想の体型へ。">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --primary-color: #4CAF50;
+      --secondary-color: #2E7D32;
+      --accent-color: #FF9800;
+      --light-color: #F5F5F5;
+      --dark-color: #333;
+      --text-color: #444;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+    }
+    
+    body {
+      color: var(--text-color);
+      line-height: 1.6;
+      background-color: #f9f9f9;
+    }
+    
+    #outer {
+      max-width: 1200px;
+      margin: 0 auto;
+      background-color: white;
+      box-shadow: 0 0 15px rgba(0,0,0,0.05);
+    }
+    
+    header {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 1rem 0;
+    }
+    
+    #header-container {
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+    
+    #head-inner h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .description {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+    
+    .download-links {
+      margin: 1.5rem 0;
+    }
+    
+    .download-links a {
+      display: inline-block;
+      margin: 0 0.5rem;
+    }
+    
+    .btn {
+      display: inline-block;
+      background: var(--accent-color);
+      color: white;
+      padding: 0.8rem 1.5rem;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      margin-top: 1rem;
+    }
+    
+    .btn:hover {
+      background: #e68a00;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    
+    main {
+      padding: 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    
+    h2 {
+      font-size: 2rem;
+      color: var(--primary-color);
+      margin: 2rem 0 1rem;
+      border-bottom: 2px solid var(--primary-color);
+      padding-bottom: 0.5rem;
+    }
+    
+    h3 {
+      font-size: 1.5rem;
+      color: var(--secondary-color);
+      margin: 1.5rem 0 1rem;
+    }
+    
+    h4 {
+      font-size: 1.2rem;
+      margin: 1rem 0;
+    }
+    
+    p {
+      margin-bottom: 1rem;
+    }
+    
+    .feature-section {
+      margin: 3rem 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+    
+    .feature-card {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease;
+      padding: 1.5rem;
+      text-align: center;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .feature-icon {
+      font-size: 2rem;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+    
+    .pricing-section {
+      margin: 3rem 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+    
+    .pricing-card {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+    }
+    
+    .pricing-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    }
+    
+    .pricing-header {
+      background: var(--primary-color);
+      color: white;
+      padding: 1.5rem;
+      text-align: center;
+    }
+    
+    .pricing-title {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .pricing-price {
+      font-size: 2rem;
+      font-weight: bold;
+    }
+    
+    .pricing-features {
+      padding: 1.5rem;
+    }
+    
+    .pricing-features ul {
+      list-style: none;
+      margin-bottom: 1.5rem;
+    }
+    
+    .pricing-features li {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .pricing-features li:before {
+      content: "✓";
+      color: var(--primary-color);
+      margin-right: 0.5rem;
+    }
+    
+    .cta-section {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      text-align: center;
+      padding: 3rem 1rem;
+      margin: 2rem 0;
+      border-radius: 10px;
+    }
+    
+    .cta-title {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    
+    footer {
+      background-color: var(--dark-color);
+      color: white;
+      text-align: center;
+      padding: 2rem;
+    }
+    
+    .menu-links {
+      margin: 2rem 0;
+      text-align: center;
+    }
+    
+    .menu-links a {
+      display: inline-block;
+      color: var(--text-color);
+      text-decoration: none;
+      margin: 0 1rem;
+      padding: 0.5rem;
+      transition: color 0.3s ease;
+    }
+    
+    .menu-links a:hover {
+      color: var(--primary-color);
+    }
+    
+    @media (max-width: 768px) {
+      .feature-section, .pricing-section {
+        grid-template-columns: 1fr;
+      }
+      
+      .menu-links {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .menu-links a {
+        margin: 0.5rem 0;
+      }
+    }
+  </style>
 </head>
 <body>
-<div id="outer">
-<header><div id="header-container"><div id="head-inner"><h1>あなたのＨＰタイトル</h1>
-<p class="description">あなたのＨＰの説明文</p></div></div>
-</header>
-<div id="content-wrapper">
-<main>
-<div id="inner">
-<h2>記事ページ見出し・大</h2>
-<p>文章あれこれ</p>
-<h3>記事ページ見出し・中</h3>
-<p>文章あれこれ</p>
-<h4>記事ページ見出し・小</h4>
-<p>文章あれこれ</p>
-</div>
-</main>
-<aside>
-<div id="middle-inner">
-<div class="side-title">menu</div>
-<div class="side">
-<ul>
-<li>記事ページへのリンク</li>
-<li>記事ページへのリンク</li>
-</ul>
-</div>
-</div>
-</aside>
-</div>
-<footer>© 2010 あなたのホームページ</footer>
-</div></body>
+  <div id="outer">
+    <header>
+      <div id="header-container">
+        <div id="head-inner">
+          <h1>SaveCalories</h1>
+          <p class="description">あなたの理想の体型を実現する最もシンプルな方法</p>
+          <div class="download-links">
+            <p>App StoreとGoogle Playで今すぐ入手できます</p>
+            <a href="#app-store">
+              <img src="/api/placeholder/160/50" alt="App Storeでダウンロード">
+            </a>
+            <a href="#google-play">
+              <img src="/api/placeholder/160/50" alt="Google Playでダウンロード">
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+    
+    <main>
+      <h2 id="features">あなたのダイエット目標をサポート</h2>
+      <p>SaveCaloriesは、あなたの身長、性別、活動量などの個人データを基に、理想の体重に到達するためのパーソナライズされたカロリー計画を提供します。シンプルでありながら効果的なアプリで、健康的なダイエットを無理なく継続できます。</p>
+      
+      <div class="feature-section">
+        <div class="feature-card">
+          <div class="feature-icon">📊</div>
+          <h3>パーソナライズされた計画</h3>
+          <p>身長、性別、普段の歩数、現在の体重、目標体重、目標期間を入力するだけで、あなたに最適なカロリー摂取計画を自動で作成します。</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">📈</div>
+          <h3>進捗管理とグラフ</h3>
+          <p>日々の体重変化をグラフで視覚化。モチベーションを維持しながら、確実に目標に近づいていることを実感できます。</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">🍽️</div>
+          <h3>カロリー管理</h3>
+          <p>摂取したカロリーを日別、週別、月別、トータルで確認可能。食事管理が驚くほど簡単になります。</p>
+        </div>
+      </div>
+      
+      <h2 id="pricing">選べる料金プラン</h2>
+      <p>あなたのライフスタイルに合わせて最適なプランをお選びいただけます。</p>
+      
+      <div class="pricing-section">
+        <div class="pricing-card">
+          <div class="pricing-header">
+            <h3 class="pricing-title">月額プラン</h3>
+            <div class="pricing-price">¥100/月</div>
+          </div>
+          <div class="pricing-features">
+            <ul>
+              <li>すべての機能にアクセス可能</li>
+              <li>毎月の自動更新</li>
+              <li>いつでもキャンセル可能</li>
+              <li>7日間の無料トライアル</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="pricing-card">
+          <div class="pricing-header">
+            <h3 class="pricing-title">買い切りプラン</h3>
+            <div class="pricing-price">¥500</div>
+          </div>
+          <div class="pricing-features">
+            <ul>
+              <li>すべての機能に永久アクセス</li>
+              <li>追加料金なし</li>
+              <li>将来のアップデートも含む</li>
+              <li>7日間の無料トライアル</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <h2 id="testimonials">お客様の声</h2>
+      <div class="testimonials">
+        <blockquote>
+          <p>「SaveCaloriesを使い始めて3ヶ月で目標体重を達成しました。カロリー計算が自動化されているので、ストレスなく続けられました。」<br><cite>- 田中さん（35歳）</cite></p>
+        </blockquote>
+        <hr>
+        <blockquote>
+          <p>「グラフ機能で自分の進捗が視覚的に確認できるのが良いですね。モチベーション維持に役立っています。」<br><cite>- 佐藤さん（28歳）</cite></p>
+        </blockquote>
+      </div>
+    </main>
+    
+    <footer>
+      <p>© 2025 SaveCalories - あなたの健康をサポートするアプリ</p>
+      <p>
+        <a href="https://doc-hosting.flycricket.io/savecalories-privacy-policy/a5c5e7d9-7ad7-4181-8997-84ae79a68956/privacy" style="color: white; margin: 0 10px;">プライバシーポリシー</a> | 
+        <a href="https://doc-hosting.flycricket.io/savecalories-terms-of-use/69fa0802-4385-4e1c-8df5-5899bc1ddeca/terms" style="color: white; margin: 0 10px;">利用規約</a> | 
+      </p>
+    </footer>
+  </div>
+</body>
 </html>
