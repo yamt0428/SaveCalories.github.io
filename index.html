@@ -46,6 +46,25 @@
             opacity: 0.9;
         }
         
+        .download-button {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 15px 40px;
+            background-color: white;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.1em;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .download-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        
         .content {
             padding: 40px;
         }
@@ -159,6 +178,11 @@
             .link-button {
                 text-align: center;
             }
+            
+            .download-button {
+                font-size: 1em;
+                padding: 12px 30px;
+            }
         }
     </style>
 </head>
@@ -167,6 +191,7 @@
         <div class="header">
             <h1>SaveCalories</h1>
             <p>アプリサポート</p>
+            <a href="https://apps.apple.com/jp/app/savecalories/id6744693647" class="download-button" target="_blank" rel="noopener noreferrer">📱 App Storeでダウンロード</a>
         </div>
         
         <div class="content">
