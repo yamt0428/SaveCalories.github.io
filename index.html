@@ -46,6 +46,14 @@
             opacity: 0.9;
         }
         
+        .app-icon {
+            width: 120px;
+            height: 120px;
+            border-radius: 22%;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        
         .download-badge {
             display: inline-block;
             margin-top: 25px;
@@ -201,6 +209,11 @@
                 font-size: 2em;
             }
             
+            .app-icon {
+                width: 100px;
+                height: 100px;
+            }
+            
             .content {
                 padding: 20px;
             }
@@ -232,6 +245,7 @@
 <body>
     <div class="container">
         <div class="header">
+            <img src="./images/app-icon.png" alt="SaveCalories アイコン" class="app-icon" onerror="this.style.display='none'">
             <h1>SaveCalories</h1>
             <p>アプリサポート</p>
             <a href="https://apps.apple.com/us/app/savecalories/id6744693647?itscg=30200&itsct=apps_box_badge&mttnsubad=6744693647" class="download-badge" target="_blank" rel="noopener noreferrer">
